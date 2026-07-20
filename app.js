@@ -149,76 +149,179 @@ function resetPhotoInput() {
 
 function setupCommunityWall() {
   const form = document.querySelector("#memory-form");
+
+  if (!form) {
+    console.error("Nie znaleziono formularza #memory-form");
+    return;
+  }
+
   const photoInput = form.elements.photo;
   const preview = document.querySelector("#photo-preview");
-  const note = document.querySelector("#form-note");
 
-  if (!isSupabaseConfigured) {
-    note.textContent = "Tryb lokalny: Twój wpis zapisze się w tej przeglądarce. Podłącz Supabase przed publikacją, aby ściana była wspólna dla wszystkich.";
+  if (!photoInput || !preview) {
+    console.error("Brak pola zdjęcia albo podglądu");
+    return;
   }
 
   photoInput.addEventListener("change", () => {
     const [photo] = photoInput.files;
+
     if (!photo) return;
+
     if (photo.size > 5 * 1024 * 1024) {
       showToast("Zdjęcie jest za duże — maksymalny rozmiar to 5 MB.");
       resetPhotoInput();
       return;
     }
+
     selectedPhoto = photo;
+
     const image = preview.querySelector("img");
     image.src = URL.createObjectURL(photo);
     preview.hidden = false;
   });
 
-  preview.querySelector("button").addEventListener("click", resetPhotoInput);
+
+  preview.querySelector("button")
+    .addEventListener("click", resetPhotoInput);
+
 
   form.addEventListener("submit", async event => {
     event.preventDefault();
+
+    console.log("FORMULARZ DZIAŁA");
+
     const formData = new FormData(form);
-    const author = formData.get("author").trim();
-    const message = formData.get("message").trim();
+
+    const author = formData.get("author")?.trim();
+    const message = formData.get("message")?.trim();
+
+
+    if (!author || !message) {
+      showToast("Uzupełnij wszystkie wymagane pola.");
+      return;
+    }
+
+
     const submit = form.querySelector("[type=submit]");
-    if (!author || !message) return;
 
     submit.disabled = true;
     submit.textContent = "Chwilka…";
+
+
     try {
+
       if (!supabaseClient) {
-        const photoUrl = selectedPhoto ? URL.createObjectURL(selectedPhoto) : "";
-        saveLocalMemory({ author, text: message, photoUrl, tilt: "-1.1deg" });
-        renderMemories([...getLocalMemories(), ...demoMemories]);
-        showToast("Zapisane na tym urządzeniu. Podłączonej ścianie przyda się Supabase.");
-      } else {
-        const session = await ensureAnonymousSession();
-        let photoPath = null;
-        if (selectedPhoto) {
-          const extension = selectedPhoto.name.split(".").pop().toLowerCase();
-          photoPath = `${session.user.id}/${crypto.randomUUID()}.${extension}`;
-          const { error: uploadError } = await supabaseClient.storage
-            .from("lucky-wheat-photos")
-            .upload(photoPath, selectedPhoto, { contentType: selectedPhoto.type, upsert: false });
-          if (uploadError) throw uploadError;
-        }
-        const { error: insertError } = await supabaseClient.from("memories").insert({
-          user_id: session.user.id,
+
+        const photoUrl = selectedPhoto
+          ? URL.createObjectURL(selectedPhoto)
+          : "";
+
+
+        saveLocalMemory({
           author,
-          message,
-          photo_path: photoPath
+          text: message,
+          photoUrl,
+          tilt: "-1.1deg"
         });
-        if (insertError) throw insertError;
-        showToast("Dzięki! Wpis czeka na krótką moderację przed publikacją.");
+
+
+        renderMemories([
+          ...getLocalMemories(),
+          ...demoMemories
+        ]);
+
+
+        showToast("Dodano wpis lokalnie!");
+
+      } else {
+
+
+        const session = await ensureAnonymousSession();
+
+        let photoPath = null;
+
+
+        if (selectedPhoto) {
+
+          const extension =
+            selectedPhoto.name
+              .split(".")
+              .pop()
+              .toLowerCase();
+
+
+          photoPath =
+            `${session.user.id}/${crypto.randomUUID()}.${extension}`;
+
+
+          const { error: uploadError } =
+            await supabaseClient.storage
+              .from("lucky-wheat-photos")
+              .upload(
+                photoPath,
+                selectedPhoto,
+                {
+                  contentType: selectedPhoto.type,
+                  upsert: false
+                }
+              );
+
+
+          if (uploadError) {
+            throw uploadError;
+          }
+
+        }
+
+
+        const { error: insertError } =
+          await supabaseClient
+            .from("memories")
+            .insert({
+              user_id: session.user.id,
+              author,
+              message,
+              photo_path: photoPath,
+              approved: false
+            });
+
+
+        if (insertError) {
+          throw insertError;
+        }
+
+
+        showToast(
+          "Dzięki! Wpis czeka na akceptację."
+        );
+
       }
+
+
       form.reset();
       resetPhotoInput();
+
+
     } catch (error) {
-      console.error(error);
-      showToast("Nie udało się wysłać wpisu. Spróbuj jeszcze raz za chwilę.");
+
+      console.error("Błąd formularza:", error);
+
+      showToast(
+        "Nie udało się wysłać wpisu."
+      );
+
     } finally {
+
       submit.disabled = false;
-      submit.innerHTML = "Wyślij do ściany <span>↗</span>";
+
+      submit.innerHTML =
+        'Wyślij do ściany <span>↗</span>';
+
     }
+
   });
+
 
   getPublicMemories();
 }
@@ -295,20 +398,32 @@ function setupInteractions() {
     });
   });
 
-  document.querySelector("#share-button").addEventListener("click", async () => {
-    const shareData = { title: "Lucky Wheat — Witbier od Klimasa", text: "Zobacz historię limitowanej warki Lucky Wheat.", url: window.location.href };
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        showToast("Link skopiowany. Podeślij go swojej ekipie!");
+  const shareButton = document.querySelector("#share-button");
+
+  if (shareButton) {
+    shareButton.addEventListener("click", async () => {
+      const shareData = {
+        title: "Lucky Wheat — Witbier od Klimasa",
+        text: "Zobacz historię limitowanej warki Lucky Wheat.",
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(window.location.href);
+          showToast("Link skopiowany. Podeślij go swojej ekipie!");
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          showToast("Nie udało się udostępnić linku.");
+        }
       }
-    } catch (error) {
-      if (error.name !== "AbortError") showToast("Nie udało się udostępnić linku.");
-    }
-  });
+    });
+  }
 }
+
 
 setupInteractions();
 setupCommunityWall();
