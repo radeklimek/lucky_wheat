@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#6f9636" />
+  <meta name="description"
+    content="KLIMAS Lucky Wheat — limitowany, domowy witbier. Poznaj recepturę, rytuał serwowania i wspomnienia z degustacji." />
+  <title>Klimas Lucky Wheat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Rye&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="sun" aria-hidden="true"></div>
+
+  <header class="topbar wrapper">
+    <a class="wordmark" href="#start" aria-label="Lucky Wheat — strona główna">LW</a>
+    <nav aria-label="Nawigacja strony">
+      <a href="#historia">Historia</a>
+      <a href="#degustacja">Degustacja</a>
+      <a href="#sciana">Ściana wspomnień</a>
+    </nav>
+    <span class="age-mark">18+</span>
+  </header>
+
+  <main id="start">
+    <section class="hero wrapper" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Domowa seria limitowana · 01/2026</p>
+
+        <h1 id="page-title">Lucky<br /><em>Wheat</em></h1>
+        <p class="hero-style">Witbier <span>·</span> belgijskie piwo pszeniczne</p>
+        <p class="lead">
+          Lekkie, mętne i orzeźwiające. Słody, chmiele, skórka pomarańczy Curacao i kolendra skupione w jednej butelce!
+        </p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#degustacja">Rozpocznij degustację <span>↓</span></a>
+          <button class="text-button" type="button" data-open-label>Obejrzyj etykietę <span>↗</span></button>
+        </div>
+      </div>
+
+      <figure class="hero-art">
+        <img src="assets/ludki.png" alt="Pszenica i kufel z ilustracji na etykiecie Lucky Wheat" />
+      </figure>
+
+      <aside class="bottle-card" aria-label="Dane piwa">
+        <p>Warka nr <strong>01/2026</strong></p>
+        <div class="metric-grid">
+          <div><b>4,8%</b><span>alk. obj.</span></div>
+          <div><b>12°</b><span>Blg</span></div>
+          <div><b>15</b><span>IBU</span></div>
+          <div><b>6–8°</b><span>serwuj</span></div>
+        </div>
+        <div class="bottle-lookup">
+          <label for="bottle-number">Którą butelkę masz?</label>
+          <div>
+            <input id="bottle-number" inputmode="numeric" min="1" max="40" placeholder="01–40" />
+            <button type="button" id="unlock-bottle">Odkryj</button>
+          </div>
+          <p id="bottle-message" aria-live="polite">Wpisz swój numer i odkryj ciekawostkę!</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ticker" aria-label="Najważniejsze cechy piwa">
+      <div>
+        <span>Pszeniczne</span><i>✦</i><span>Orzeźwiające</span><i>✦</i><span>Belgijski charakter</span><i>✦</i><span>40
+          butelek</span><i>✦</i>
+        <span>Pszeniczne</span><i>✦</i><span>Orzeźwiające</span><i>✦</i><span>Belgijski charakter</span><i>✦</i>
+      </div>
+    </section>
+
+    <section class="story wrapper section" id="historia" aria-labelledby="story-title">
+      <div class="section-heading">
+        <p class="eyebrow"><span></span> O tej warce</p>
+        <h2 id="story-title">Pełnia smaku,<br />pełnia orzeźwienia.</h2>
+      </div>
+      <div class="story-content">
+        <p class="story-intro">
+          Witbier to belgijski klasyk: jasny, naturalnie mętny i pełen cytrusowo-korzennych niuansów.
+
+        </p>
+        <dl class="fact-list">
+          <div>
+            <dt>20 l</dt>
+            <dd>objętość całej warki</dd>
+          </div>
+          <div>
+            <dt>40</dt>
+            <dd>butelek po 500 ml</dd>
+          </div>
+          <div>
+            <dt>18–22°C</dt>
+            <dd>temperatura fermentacji</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="ingredient-section section" aria-labelledby="ingredients-title">
+      <div class="wrapper">
+        <div class="section-heading centered">
+          <p class="eyebrow"><span></span> Receptura</p>
+          <h2 id="ingredients-title">Poznaj ekipę<br />z jednej butelki.</h2>
+          <p>Kliknij składnik — każdy zostawia po sobie inny ślad.</p>
+        </div>
+        <div class="ingredient-grid" role="list">
+          <button class="ingredient-card active" type="button" data-ingredient="wheat" role="listitem">
+            <span class="ingredient-number">01</span><span class="ingredient-icon">🌾</span><b>Słód</b><small>lekkość i
+              aksamit</small>
+          </button>
+          <button class="ingredient-card" type="button" data-ingredient="orange" role="listitem">
+            <span class="ingredient-number">02</span><span class="ingredient-icon">🍊</span><b>Curacao</b><small>gorzka
+              skórka pomarańczy</small>
+          </button>
+          <button class="ingredient-card" type="button" data-ingredient="coriander" role="listitem">
+            <span class="ingredient-number">03</span><span
+              class="ingredient-icon">✳</span><b>Kolendra</b><small>cytrusowy błysk</small>
+          </button>
+          <button class="ingredient-card" type="button" data-ingredient="hops" role="listitem">
+            <span class="ingredient-number">04</span><span class="ingredient-icon">✦</span><b>Saaz +
+              Palisade</b><small>delikatna goryczka</small>
+          </button>
+        </div>
+        <div class="ingredient-detail" id="ingredient-detail" aria-live="polite">
+          <span class="detail-label">Słod:</span>
+          <p>„To dzięki mnie piwo jest lekkie, miękkie i przyjemnie mętne. Nie filtruj wrażeń.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tasting wrapper section" id="degustacja" aria-labelledby="tasting-title">
+      <div class="tasting-panel">
+        <div>
+          <p class="eyebrow"><span></span> Poznaj aromaty</p>
+          <h2 id="tasting-title">Jak serwować LUCKY WHEAT?<br /></h2>
+          <p class="tasting-copy">To mały przewodnik po dużej przyjemności. Dopasuj temperaturę i poznaj szczegóły.</p>
+        </div>
+        <div class="temperature-control">
+          <div class="thermometer" aria-hidden="true"><span id="thermometer-fill"></span></div>
+          <div>
+            <label for="temperature">Temperatura podania <output id="temperature-value">7°C</output></label>
+            <input type="range" id="temperature" min="4" max="10" value="7" />
+            <p id="temperature-note">Idealnie. Cytrusy są wyraźne, a piwo pozostaje rześkie.</p>
+          </div>
+        </div>
+        <div class="mood-control">
+
+        </div>
+      </div>
+    </section>
+    ś
+    <section class="wall section" id="sciana" aria-labelledby="wall-title">
+      <div class="wrapper">
+        <div class="wall-heading">
+          <div>
+            <p class="eyebrow"><span></span> Ściana wspomnień</p>
+            <h2 id="wall-title">Zostaw coś<br />po sobie!</h2>
+          </div>
+          <p>Zostaw krótką notatkę, ocenę albo zdjęcie z degustacji. Trafisz od razu na ścianę Lucky Wheat.</p>
+        </div>
+
+        <div class="community-layout">
+          <form class="memory-form" id="memory-form">
+            <p class="form-kicker">ZOSTAW ŚLAD</p>
+            <label>Twoje imię lub ksywka<input name="author" maxlength="30" required placeholder="np. radar" /></label>
+            <label>Jak smakowało, co poprawić?<textarea name="message" rows="4" maxlength="360" required
+                placeholder="Najlepszy moment, nuta smaku albo po prostu: na zdrowie!"></textarea></label>
+            <label class="upload-label">Dodaj zdjęcie (opcjonalnie)<input type="file" name="photo"
+                accept="image/png,image/jpeg,image/webp" /><span>＋ Wybierz zdjęcie <small>JPG, PNG lub WEBP · do 5
+                  MB</small></span></label>
+            <div class="photo-preview" id="photo-preview" hidden><img alt="Podgląd wybranego zdjęcia" /><button
+                type="button" aria-label="Usuń wybrane zdjęcie">×</button></div>
+            <button class="button button-light" type="submit">Wyślij do ściany wspomnień <span>↗</span></button>
+
+          </form>
+          <div class="memory-grid" id="memory-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="label-callout wrapper section">
+      <div class="label-copy">
+        <p class="eyebrow"><span></span> Edycja kolekcjonerska</p>
+        <h2>Masz ją w rękach.<br />Dzięki za zaufanie!</h2>
+        <p>Lucky Wheat to 40 butelek domowego witbiera. Schłodź do 6–8°C i wznieś toast za
+          kolejne warki.</p>
+      </div>
+      <button class="label-image" type="button" data-open-label aria-label="Powiększ etykietę Lucky Wheat">
+        <img src="assets/lucky-wheat-label.jpg" alt="Projekt etykiety Lucky Wheat Witbier" />
+        <span>Obejrzyj etykietę w pełnym rozmiarze ↗</span>
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrapper footer-content">
+      <p><b>KLIMAS</b> <span>·</span> Lucky Wheat 01/2026</p>
+      <p>Warzone domowo, dzielone z ludźmi.</p>
+
+    </div>
+  </footer>
+
+  <dialog id="label-dialog">
+    <button class="dialog-close" type="button" aria-label="Zamknij podgląd etykiety">×</button>
+    <img src="assets/lucky-wheat-label.jpg" alt="Projekt etykiety Lucky Wheat Witbier" />
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

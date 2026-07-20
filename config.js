@@ -1,0 +1,8 @@
+/*
+ * Wklej tu dane projektu Supabase, aby komentarze i zdjęcia były wspólne dla
+ * wszystkich odwiedzających. Klucz anon jest przeznaczony do użycia w przeglądarce.
+ */
+window.LUCKY_WHEAT_SUPABASE = {
+  url: "",
+  anonKey: ""
+};
