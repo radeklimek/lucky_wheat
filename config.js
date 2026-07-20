@@ -3,6 +3,6 @@
  * wszystkich odwiedzających. Klucz anon jest przeznaczony do użycia w przeglądarce.
  */
 window.LUCKY_WHEAT_SUPABASE = {
-  url: "https://acuzzakfancouvrtimzr.supabase.co/rest/v1/",
+  url: "https://acuzzakfancouvrtimzr.supabase.co/",
   anonKey: "sb_publishable_40Pnzy4PnkJmGtXolx8p1Q_YPCkVh_r"
 };
