@@ -106,7 +106,19 @@ async function getPublicMemories() {
     renderMemories([...getLocalMemories(), ...demoMemories]);
     return;
   }
+const { data: userData, error: userErr } = await supabaseClient.auth.getUser();
+console.log("UID:", userData.user?.id ?? null);
+console.log("Auth error:", userErr);
 
+const { data, error } = await supabaseClient
+  .from("memories")
+  .select("author, message, photo_path, created_at")
+  .eq("approved", true)
+  .order("created_at", { ascending: false })
+  .limit(24);
+
+console.log("MEMORIES error:", error);
+console.log("MEMORIES rows:", data);
   const { data, error } = await supabaseClient
     .from("memories")
     .select("author, message, photo_path, created_at")
