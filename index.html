@@ -4,24 +4,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#6f9636" />
+  <meta name="theme-color" content="#8da44e" />
   <meta name="description"
     content="KLIMAS Lucky Wheat — limitowany, domowy witbier. Poznaj recepturę, rytuał serwowania i wspomnienia z degustacji." />
   <title>Klimas Lucky Wheat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Rye&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Rye&family=Titan+One&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
   <div class="grain" aria-hidden="true"></div>
-  <div class="sun" aria-hidden="true"></div>
 
   <header class="topbar wrapper">
-    <a class="wordmark" href="#start" aria-label="Lucky Wheat — strona główna">LW</a>
+    <a class="wordmark" href="#start" aria-label="Klimas Lucky Wheat — strona główna">K</a>
     <nav aria-label="Nawigacja strony">
       <a href="#historia">Historia</a>
       <a href="#degustacja">Degustacja</a>
@@ -31,31 +30,34 @@
   </header>
 
   <main id="start">
-    <section class="hero wrapper" aria-labelledby="page-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span></span> Domowa seria limitowana · 01/2026</p>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-panel wrapper">
+        <p class="hero-brand">KLIMAS</p>
 
-        <h1 id="page-title">Lucky<br /><em>Wheat</em></h1>
-        <p class="hero-style">Witbier <span>·</span> belgijskie piwo pszeniczne</p>
-        <p class="lead">
-          Lekkie, mętne i orzeźwiające. Słody, chmiele, skórka pomarańczy Curacao i kolendra skupione w jednej butelce!
-        </p>
-        <div class="hero-actions">
-          <a class="button button-dark" href="#degustacja">Rozpocznij degustację <span>↓</span></a>
-          <button class="text-button" type="button" data-open-label>Obejrzyj etykietę <span>↗</span></button>
+        <figure class="hero-art">
+          <img src="assets/hero-character.png" width="327" height="387"
+            alt="Logo Lucky Wheat — postać w okularach z kuflem witbiera" />
+        </figure>
+
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Numer partii · 01/2026 · 40 butelek</p>
+          <h1 id="page-title">
+            <span class="title-lucky">Lucky</span>
+            <span class="title-wheat">Wheat</span>
+          </h1>
+          <p class="hero-style">Witbier</p>
+          <p class="lead">
+            Lekkie, orzeźwiające, pszeniczne z belgijskim charakterem. Skórka Curacao, kolendra i delikatna goryczka
+            Saaz z Palisade — jak na etykiecie.
+          </p>
         </div>
-      </div>
 
-      <figure class="hero-art">
-        <img src="assets/ludki.png" alt="Pszenica i kufel z ilustracji na etykiecie Lucky Wheat" />
-      </figure>
-
-      <aside class="bottle-card" aria-label="Dane piwa">
+        <aside class="bottle-card" aria-label="Dane piwa">
         <p>Warka nr <strong>01/2026</strong></p>
         <div class="metric-grid">
-          <div><b>4,8%</b><span>alk. obj.</span></div>
+          <div><b>4,2%</b><span>alk. obj.</span></div>
           <div><b>12°</b><span>Blg</span></div>
-          <div><b>15</b><span>IBU</span></div>
+          <div><b>12</b><span>IBU</span></div>
           <div><b>6–8°</b><span>serwuj</span></div>
         </div>
         <div class="bottle-lookup">
@@ -67,6 +69,7 @@
           <p id="bottle-message" aria-live="polite">Wpisz swój numer i odkryj ciekawostkę!</p>
         </div>
       </aside>
+      </div>
     </section>
 
     <section class="ticker" aria-label="Najważniejsze cechy piwa">
@@ -156,7 +159,7 @@
         </div>
       </div>
     </section>
-    ś
+
     <section class="wall section" id="sciana" aria-labelledby="wall-title">
       <div class="wrapper">
         <div class="wall-heading">
@@ -194,7 +197,7 @@
           kolejne warki.</p>
       </div>
       <button class="label-image" type="button" data-open-label aria-label="Powiększ etykietę Lucky Wheat">
-        <img src="assets/lucky-wheat-label.jpg" alt="Projekt etykiety Lucky Wheat Witbier" />
+        <img src="assets/lucky-wheat-label.png" alt="Etykieta Lucky Wheat Witbier" />
         <span>Obejrzyj etykietę w pełnym rozmiarze ↗</span>
       </button>
     </section>
@@ -210,7 +213,7 @@
 
   <dialog id="label-dialog">
     <button class="dialog-close" type="button" aria-label="Zamknij podgląd etykiety">×</button>
-    <img src="assets/lucky-wheat-label.jpg" alt="Projekt etykiety Lucky Wheat Witbier" />
+    <img src="assets/lucky-wheat-label.png" alt="Etykieta Lucky Wheat Witbier" />
   </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
