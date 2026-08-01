@@ -1,19 +1,19 @@
 const ingredientDescriptions = {
   wheat: {
     label: "SŁÓD:",
-    text: "Nadaje piwu lekką pełnię, jasną barwę oraz delikatny, zbożowy charakter z subtelną nutą chleba i świeżego pieczywa."
+    text: "Nadaje piwu lekką pełnię, jasną barwę oraz delikatny, zbożowy charakter z subtelną nutą chleba i świeżego pieczywa."
   },
   orange: {
     label: "CURACAO:",
-    text: "Dodaje świeży, cytrusowy aromat oraz lekką owocową słodycz, będącą znakiem rozpoznawczym stylu Witbier."
+    text: "Dodaje świeży, cytrusowy aromat oraz lekką owocową słodycz, będącą znakiem rozpoznawczym stylu Witbier."
   },
   coriander: {
     label: "KOLENDRA:",
-    text: "Wzbogaca piwo o subtelne, korzenne nuty z cytrusowym akcentem, nadając mu charakterystyczny belgijski profil."
+    text: "Wzbogaca piwo o subtelne, korzenne nuty z cytrusowym akcentem, nadając mu charakterystyczny belgijski profil."
   },
   hops: {
     label: "CHMIELE SAAZ + PALISADE:",
-    text: "Wnosi łagodną goryczkę oraz delikatny, ziołowo-kwiatowy aromat, który podkreśla orzeźwiający charakter piwa."
+    text: "Wnosi łagodną goryczkę oraz delikatny, ziołowo-kwiatowy aromat, który podkreśla orzeźwiający charakter piwa."
   }
 };
 
@@ -107,7 +107,7 @@ function renderMemoryCard(memory) {
   const image = memory.photoUrl
     ? `<img src="${escapeHtml(memory.photoUrl)}" alt="Zdjęcie z degustacji przesłane przez ${escapeHtml(memory.author)}" loading="lazy" />`
     : "";
-  card.innerHTML = `${image}<div class="memory-copy"><p>${escapeHtml(memory.text)}"</p><footer><span>${escapeHtml(memory.author)}</span><span>✦</span></footer></div>`;
+  card.innerHTML = `${image}<div class="memory-copy"><p>${escapeHtml(memory.text)}</p><footer><span>${escapeHtml(memory.author)}</span><span>✦</span></footer></div>`;
   return card;
 }
 
