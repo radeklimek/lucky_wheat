@@ -91,6 +91,17 @@ function showToast(message) {
   showToast.timeout = window.setTimeout(() => toast.classList.remove("show"), 3500);
 }
 
+function formatError(err) {
+  try {
+    if (!err) return 'nieznany błąd';
+    if (typeof err === 'string') return err;
+    if (err.message) return err.message;
+    return JSON.stringify(err);
+  } catch (e) {
+    return String(err);
+  }
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -138,45 +149,55 @@ async function getPublicMemories() {
     return;
   }
 
-  const { data, error } = await supabaseClient
-    .from("memories")
-    .select("author, message, photo_path, created_at")
-    .eq("approved", true)
-    .order("created_at", { ascending: false })
-    .limit(24);
+  try {
+    const { data, error } = await supabaseClient
+      .from("memories")
+      .select("author, message, photo_path, created_at")
+      .eq("approved", true)
+      .order("created_at", { ascending: false })
+      .limit(24);
 
-  if (error) {
-    console.error(error);
+    if (error) {
+      console.error('Supabase fetch error:', error);
+      renderMemories(demoMemories);
+      return;
+    }
+
+    const memories = data.map((memory, index) => ({
+      author: memory.author,
+      text: memory.message,
+      photoUrl: memory.photo_path
+        ? supabaseClient.storage.from("lucky-wheat-photos").getPublicUrl(memory.photo_path).data.publicUrl
+        : "",
+      tilt: `${[-1, 1.1, -.6, .7][index % 4]}deg`
+    }));
+    renderMemories([...memories, ...demoMemories]);
+  } catch (e) {
+    console.error('Error getting public memories:', e);
     renderMemories(demoMemories);
-    return;
   }
-
-  const memories = data.map((memory, index) => ({
-    author: memory.author,
-    text: memory.message,
-    photoUrl: memory.photo_path
-      ? supabaseClient.storage.from("lucky-wheat-photos").getPublicUrl(memory.photo_path).data.publicUrl
-      : "",
-    tilt: `${[-1, 1.1, -.6, .7][index % 4]}deg`
-  }));
-  renderMemories([...memories, ...demoMemories]);
 }
 
 async function ensureAnonymousSession() {
-  const { data: { session } } = await supabaseClient.auth.getSession();
+  if (!supabaseClient) throw new Error('Supabase not configured');
+  const resp = await supabaseClient.auth.getSession();
+  const session = resp?.data?.session;
   if (session) return session;
-  const { data, error } = await supabaseClient.auth.signInAnonymously();
-  if (error) throw error;
-  return data.session;
+  const sign = await supabaseClient.auth.signInAnonymously();
+  if (sign.error) throw sign.error;
+  return sign.data.session;
 }
 
 function resetPhotoInput() {
   selectedPhoto = null;
   const form = document.querySelector("#memory-form");
-  form.elements.photo.value = "";
+  if (form && form.elements.photo) form.elements.photo.value = "";
   const preview = document.querySelector("#photo-preview");
-  preview.hidden = true;
-  preview.querySelector("img").removeAttribute("src");
+  if (preview) {
+    preview.hidden = true;
+    const img = preview.querySelector("img");
+    if (img) img.removeAttribute("src");
+  }
 }
 
 function setupCommunityWall() {
@@ -216,6 +237,8 @@ function setupCommunityWall() {
     submit.disabled = true;
     submit.textContent = "Chwilka…";
 
+    console.debug('Submitting memory', { author, hasPhoto: !!selectedPhoto, usingSupabase: !!supabaseClient });
+
     try {
       if (!supabaseClient) {
         const photoUrl = selectedPhoto ? URL.createObjectURL(selectedPhoto) : "";
@@ -223,27 +246,39 @@ function setupCommunityWall() {
         renderMemories([...getLocalMemories(), ...demoMemories]);
         showToast("Dodano wpis lokalnie!");
       } else {
+        // Supabase flow
         const session = await ensureAnonymousSession();
+        console.debug('Supabase session', session?.user?.id);
         let photoPath = null;
         if (selectedPhoto) {
-          const extension = selectedPhoto.name.split(".").pop().toLowerCase();
+          const extension = selectedPhoto.name.split('.').pop().toLowerCase();
           photoPath = `${session.user.id}/${crypto.randomUUID()}.${extension}`;
-          const { error: uploadError } = await supabaseClient.storage
+          const { data: uploadData, error: uploadError } = await supabaseClient.storage
             .from("lucky-wheat-photos")
             .upload(photoPath, selectedPhoto, { contentType: selectedPhoto.type, upsert: false });
-          if (uploadError) throw uploadError;
+          if (uploadError) {
+            console.error('Upload error', uploadError);
+            throw uploadError;
+          }
+          console.debug('Upload data', uploadData);
         }
-        const { error: insertError } = await supabaseClient
+
+        const { data: insertData, error: insertError } = await supabaseClient
           .from("memories")
           .insert({ user_id: session.user.id, author, message, photo_path: photoPath, approved: false });
-        if (insertError) throw insertError;
+        if (insertError) {
+          console.error('Insert error', insertError);
+          throw insertError;
+        }
+        console.debug('Insert data', insertData);
         showToast("Dzięki! Wpis czeka na akceptację.");
       }
       form.reset();
       resetPhotoInput();
     } catch (error) {
       console.error("Błąd formularza:", error);
-      showToast("Nie udało się wysłać wpisu.");
+      const msg = formatError(error).slice(0, 200);
+      showToast(`Nie udało się wysłać wpisu: ${msg}`);
     } finally {
       submit.disabled = false;
       submit.innerHTML = 'Wyślij do ściany wspomnień <span>↗</span>';
