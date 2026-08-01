@@ -1,19 +1,19 @@
 const ingredientDescriptions = {
   wheat: {
     label: "SŁÓD:",
-    text: "\u201eNadaje piwu lekką pełnię, jasną barwę oraz delikatny, zbożowy charakter z subtelną nutą chleba i świeżego pieczywa.\u201d"
+    text: "Nadaje piwu lekką pełnię, jasną barwę oraz delikatny, zbożowy charakter z subtelną nutą chleba i świeżego pieczywa."
   },
   orange: {
     label: "CURACAO:",
-    text: "\u201eDodaje świeży, cytrusowy aromat oraz lekką owocową słodycz, będącą znakiem rozpoznawczym stylu Witbier.\u201d"
+    text: "Dodaje świeży, cytrusowy aromat oraz lekką owocową słodycz, będącą znakiem rozpoznawczym stylu Witbier."
   },
   coriander: {
     label: "KOLENDRA:",
-    text: "\u201eWzbogaca piwo o subtelne, korzenne nuty z cytrusowym akcentem, nadając mu charakterystyczny belgijski profil.\u201d"
+    text: "Wzbogaca piwo o subtelne, korzenne nuty z cytrusowym akcentem, nadając mu charakterystyczny belgijski profil."
   },
   hops: {
     label: "CHMIELE SAAZ + PALISADE:",
-    text: "\u201eWnosi łagodną goryczkę oraz delikatny, ziołowo-kwiatowy aromat, który podkreśla orzeźwiający charakter piwa.\u201d"
+    text: "Wnosi łagodną goryczkę oraz delikatny, ziołowo-kwiatowy aromat, który podkreśla orzeźwiający charakter piwa."
   }
 };
 
@@ -25,46 +25,46 @@ const moodDescriptions = {
 
 // 40 ciekawostek — jedna na każdą butelkę
 const bottleFacts = [
-  "Butelka 01/40 · Czym jest Witbier? Witbier to tradycyjny belgijski styl piwa pszenicznego, warzony z dużym dodatkiem niesłodowanej pszenicy — naturalnie mętny i wyjątkowo orzeźwiający.",
-  "Butelka 02/40 · Skąd nazwa \u201ebiałe piwo\u201d? Witbier oznacza po niderlandzku \u201ebiałe piwo\u201d, choć ma jasnozłoty kolor. Określenie odnosi się do jego mlecznej, mętnej barwy.",
-  "Butelka 03/40 · Nie każde piwo musi być klarowne. W przypadku Witbiera lekkie zmętnienie jest oznaką stylu, a nie wadą piwa.",
-  "Butelka 04/40 · Dlaczego dodaje się kolendrę? Nasiona kolendry nadają piwu subtelny cytrusowo-korzenny aromat — jedną z cech charakterystycznych belgijskiego Witbiera.",
-  "Butelka 05/40 · Skórka pomarańczy ma znaczenie. W klasycznych recepturach wykorzystuje się gorzką skórkę pomarańczy Curaçao, która dodaje świeżości i lekkiej owocowej goryczki.",
-  "Butelka 06/40 · Piwo ma ponad 5000 lat. Najstarsze dowody warzenia piwa pochodzą z Mezopotamii i liczą ponad pięć tysięcy lat.",
-  "Butelka 07/40 · Drożdże to żywe organizmy. To właśnie one zamieniają cukry w alkohol i dwutlenek węgla, tworząc jednocześnie setki aromatów.",
-  "Butelka 08/40 · Piwo ma cztery podstawowe składniki. Woda, słód, chmiel i drożdże — z tych czterech elementów można stworzyć tysiące różnych stylów piwa.",
-  "Butelka 09/40 · Chmiel to kuzyn konopi. Obie rośliny należą do tej samej rodziny botanicznej — konopiowatych.",
-  "Butelka 10/40 · Goryczka nie zawsze oznacza mocniejsze piwo. O poziomie goryczki informuje wskaźnik IBU, który nie ma związku z zawartością alkoholu.",
-  "Butelka 11/40 · Co oznacza °Blg? Stopnie Ballinga określają ilość cukrów w brzeczce przed fermentacją, a nie procent alkoholu.",
-  "Butelka 12/40 · Najwięcej w piwie jest... wody. W zależności od stylu stanowi ona około 90–95% całego napoju.",
-  "Butelka 13/40 · Pszenica odpowiada za pianę. Dzięki wysokiej zawartości białek piwa pszeniczne tworzą wyjątkowo trwałą i gęstą pianę.",
-  "Butelka 14/40 · Belgowie uratowali Witbiera. Styl niemal zniknął w XX wieku. Odrodził go belgijski piwowar Pierre Celis.",
-  "Butelka 15/40 · Nie wszystkie piwa są filtrowane. Witbier zazwyczaj pozostaje niefiltrowany, dzięki czemu zachowuje pełniejszy smak.",
-  "Butelka 16/40 · Każdy szczep drożdży smakuje inaczej. Różne drożdże mogą tworzyć aromaty banana, goździków, jabłek czy pieprzu.",
-  "Butelka 17/40 · Dlaczego piwo się pieni? Piana powstaje dzięki dwutlenkowi węgla oraz białkom pochodzącym głównie ze słodu i pszenicy.",
-  "Butelka 18/40 · Idealna temperatura ma znaczenie. Witbier najlepiej smakuje schłodzony do około 6–8°C.",
-  "Butelka 19/40 · Słód decyduje o kolorze. Im mocniej prażony słód, tym ciemniejszy kolor piwa.",
-  "Butelka 20/40 · Nie każdy chmiel daje goryczkę. Niektóre odmiany stosuje się głównie dla aromatu cytrusów, kwiatów lub owoców tropikalnych.",
-  "Butelka 21/40 · Belgia słynie z piwa. W Belgii istnieje ponad 150 uznanych stylów i odmian piwa.",
-  "Butelka 22/40 · Witbier to piwo letnie. Dzięki lekkiej budowie i cytrusowym nutom jest jednym z najbardziej orzeźwiających stylów piwa.",
-  "Butelka 23/40 · Naturalne nagazowanie. Wiele piw rzemieślniczych uzyskuje bąbelki dzięki refermentacji już w butelce.",
-  "Butelka 24/40 · Każda szklanka wpływa na smak. Odpowiedni kształt szkła pomaga uwolnić aromaty piwa.",
-  "Butelka 25/40 · Piwo ma własne święto. Międzynarodowy Dzień Piwa obchodzony jest w pierwszy piątek sierpnia.",
-  "Butelka 26/40 · Chmiel chroni piwo. Dawniej dodawano go głównie dlatego, że wydłużał trwałość piwa dzięki właściwościom antybakteryjnym.",
-  "Butelka 27/40 · Słód powstaje z kiełkującego ziarna. Proces słodowania aktywuje enzymy potrzebne do późniejszego zacierania.",
-  "Butelka 28/40 · Drożdże pracują w ciszy. Podczas fermentacji wykonują ogromną pracę, choć często jedynym widocznym efektem są bąbelki i piana.",
-  "Butelka 29/40 · Piwo to chemia i biologia jednocześnie. Warzenie łączy procesy enzymatyczne, fermentację i kontrolę temperatury.",
-  "Butelka 30/40 · Nie każde piwo było kiedyś chmielone. Zanim zaczęto używać chmielu, piwowarzy dodawali mieszanki ziół zwane gruit.",
-  "Butelka 31/40 · Belgia ma piwną kulturę UNESCO. Belgijska kultura piwowarska została wpisana na listę niematerialnego dziedzictwa UNESCO.",
-  "Butelka 32/40 · Najważniejszy składnik jest niewidoczny. Odpowiednia jakość wody ma ogromny wpływ na smak gotowego piwa.",
-  "Butelka 33/40 · Piwo oddycha aromatem. Dlatego warto nalać je do szkła, zamiast pić bezpośrednio z butelki.",
-  "Butelka 34/40 · Witbier nie jest Weizenem. Belgijski Witbier i niemiecki Hefeweizen różnią się recepturą, drożdżami i przyprawami.",
-  "Butelka 35/40 · Aromat powstaje podczas fermentacji. To nie tylko chmiel — ogromny wpływ na zapach mają również drożdże.",
-  "Butelka 36/40 · Piwo zmienia się z czasem. Nawet po zabutelkowaniu jego smak może delikatnie ewoluować.",
-  "Butelka 37/40 · Świeżość ma znaczenie. Piwa pszeniczne najlepiej smakują młode, gdy zachowują pełnię cytrusowych i zbożowych aromatów.",
-  "Butelka 38/40 · Domowe piwowarstwo przeżywa renesans. Coraz więcej osób warzy własne piwo, eksperymentując z nowymi składnikami i stylami.",
-  "Butelka 39/40 · Każda warka jest wyjątkowa. Nawet przy identycznej recepturze dwie warki mogą delikatnie różnić się smakiem i aromatem.",
-  "Butelka 40/40 · Ostatnia butelka! Właśnie trzymasz jedną z 40 butelek Lucky Wheat — domowego Witbiera stworzonego z pasji do piwowarstwa. Dzięki za wspólne odkrywanie świata piwa! 🍺"
+  "Butelka 01/40 · Czym jest Witbier? Witbier to tradycyjny belgijski styl piwa pszenicznego, warzony z dodatkiem niesłodowanej pszenicy — naturalnie mętny i orzeźwiający.",
+  "Butelka 02/40 · Skąd nazwa 'białe piwo'? Termin odnosi się do mlecznej, mętnej barwy, a nie koloru per se.",
+  "Butelka 03/40 · Naturalna mętność Witbiera jest cechą stylu, nie wadą — wiele aromatów pochodzi z zawiesiny i drożdży.",
+  "Butelka 04/40 · Dlaczego dodaje się kolendrę? Nasiona kolendry dają subtelną nutę cytrusowo-korzenną, charakterystyczną dla wielu belgijskich receptur.",
+  "Butelka 05/40 · Skórka pomarańczy Curaçao dodaje świeżą, gorzkawą owocowość, która w parze z kolendrą tworzy klasyczny profil Witbiera.",
+  "Butelka 06/40 · Najstarsze dowody warzenia piwa sięgają Mezopotamii — piwowarstwo ma tysiące lat historii.",
+  "Butelka 07/40 · Drożdże to małe fabryki aromatów — różne szczepy potrafią dawać nuty banana, goździków czy owoców.",
+  "Butelka 08/40 · Piwo składa się głównie z wody, słodu, chmielu i drożdży — prosty zestaw, wielkie możliwości.",
+  "Butelka 09/40 · Chmiel i konopie należą do tej samej rodziny botanicznej — stad podobieństwo w wyglądzie.",
+  "Butelka 10/40 · IBU mierzy goryczkę, nie moc alkoholu — te dwie cechy nie są bezpośrednio ze sobą powiązane.",
+  "Butelka 11/40 · °Blg (Balling) opisuje zawartość cukru w brzeczce przed fermentacją, a nie zawartość alkoholu.",
+  "Butelka 12/40 · W zależności od stylu, piwo zawiera zwykle 90–95% wody — jakość wody ma duże znaczenie.",
+  "Butelka 13/40 · Pszenica pomaga tworzyć bogatszą, trwalszą pianę dzięki wysokiej zawartości białek.",
+  "Butelka 14/40 · Styl Witbier został ocalony i odnowiony przez belgijskiego piwowara Pierre'a Celisa.",
+  "Butelka 15/40 · Nie wszystkie piwa są filtrowane — pozostawienie zawiesiny to celowy zabieg dla smaku i tekstury.",
+  "Butelka 16/40 · Różne szczepy drożdży generują różne profile aromatyczne — dobór drożdży to kluczowa decyzja piwowara.",
+  "Butelka 17/40 · Piana powstaje głównie z dwutlenku węgla i białek słodowych — jej struktura wpływa na odbiór aromatu.",
+  "Butelka 18/40 · Idealna temperatura serwowania Witbiera to około 6–8°C — wtedy aromaty i świeżość są najlepiej zbalansowane.",
+  "Butelka 19/40 · Intensywność koloru zależy od użytych słodów — im mocniej palone, tym ciemniejszy kolor.",
+  "Butelka 20/40 · Niektóre odmiany chmielu służą głównie do aromatu, inne do goryczki — wybór wpływa na profil końcowy.",
+  "Butelka 21/40 · Belgia ma niezwykle bogatą kulturę piwowarską i wiele unikalnych stylów.",
+  "Butelka 22/40 · Witbier to często piwo letnie — lekkie, orzeźwiające i idealne na ciepłe dni.",
+  "Butelka 23/40 · Refermentacja w butelce to tradycyjna metoda naturalnego nagazowania wielu piw rzemieślniczych.",
+  "Butelka 24/40 · Kształt szkła wpływa na odbiór aromatu i smaku — warto dopasować szkło do stylu.",
+  "Butelka 25/40 · Międzynarodowy Dzień Piwa obchodzony jest w pierwszy piątek sierpnia — świętujmy piwo!",
+  "Butelka 26/40 · Chmiel ma właściwości konserwujące, dlatego historycznie przedłużał trwałość piwa.",
+  "Butelka 27/40 · Słód powstaje z kiełkującego ziarna — proces słodowania aktywuje enzymy potrzebne do zacierania.",
+  "Butelka 28/40 · Podczas fermentacji drożdże wytwarzają niezwykłą gamę związków aromatycznych.",
+  "Butelka 29/40 · Warzenie piwa łączy chemię i biologię — precyzja procesu wpływa na efekt końcowy.",
+  "Butelka 30/40 · Gruit to historyczna mieszanka ziół używana przed powszechnym stosowaniem chmielu.",
+  "Butelka 31/40 · Dobre surowce (słód, chmiel, woda) to podstawa wyjątkowego piwa.",
+  "Butelka 32/40 · Jakość wody jest często pomijana, a ma ogromne znaczenie dla profilu smakowego.",
+  "Butelka 33/40 · Nalewanie do szkła pozwala uwolnić aromaty i lepiej ocenić smak niż picie prosto z butelki.",
+  "Butelka 34/40 · Witbier to nie to samo co niemiecki Hefeweizen — różnią się drożdżami i przyprawami.",
+  "Butelka 35/40 · Aromaty powstające w fermentacji są równie ważne jak te z użytych chmieli.",
+  "Butelka 36/40 · Smak piwa może ewoluować z czasem nawet po zabutelkowaniu — świeżość ma znaczenie.",
+  "Butelka 37/40 · Pszeniczne piwa najlepiej smakują młode — cytrusy i świeżość są wtedy najbardziej wyraziste.",
+  "Butelka 38/40 · Domowe piwowarstwo rośnie w popularności — eksperymenty dają ciekawe rezultaty.",
+  "Butelka 39/40 · Każda warka, nawet według tej samej receptury, może mieć drobne różnice smakowe.",
+  "Butelka 40/40 · Dzięki za trzymanie w ręku jedną z 40 butelek Lucky Wheat — na zdrowie i do zobaczenia przy kolejnej warce!"
 ];
 
 const demoMemories = [
@@ -107,7 +107,7 @@ function renderMemoryCard(memory) {
   const image = memory.photoUrl
     ? `<img src="${escapeHtml(memory.photoUrl)}" alt="Zdjęcie z degustacji przesłane przez ${escapeHtml(memory.author)}" loading="lazy" />`
     : "";
-  card.innerHTML = `${image}<div class="memory-copy"><p>\u201e${escapeHtml(memory.text)}"</p><footer><span>${escapeHtml(memory.author)}</span><span>✦</span></footer></div>`;
+  card.innerHTML = `${image}<div class="memory-copy"><p>${escapeHtml(memory.text)}"</p><footer><span>${escapeHtml(memory.author)}</span><span>✦</span></footer></div>`;
   return card;
 }
 
