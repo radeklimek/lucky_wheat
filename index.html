@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Rye&family=Titan+One&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Righteous&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -19,18 +19,52 @@
 <body>
   <div class="grain" aria-hidden="true"></div>
 
-  <header class="topbar wrapper">
-    <a class="wordmark" href="#start" aria-label="Klimas Lucky Wheat — strona główna">K</a>
-    <nav aria-label="Nawigacja strony">
-      <a href="#historia">Historia</a>
-      <a href="#degustacja">Degustacja</a>
-      <a href="#sciana">Ściana wspomnień</a>
-    </nav>
-    <span class="age-mark">18+</span>
+  <!-- Floating decorative hops in background -->
+  <div class="hop-field" aria-hidden="true">
+    <span class="hop hop-1">🌾</span>
+    <span class="hop hop-2">✦</span>
+    <span class="hop hop-3">🌾</span>
+    <span class="hop hop-4">✦</span>
+    <span class="hop hop-5">🌾</span>
+    <span class="hop hop-6">✦</span>
+  </div>
+
+  <header class="topbar">
+    <div class="wrapper topbar-inner">
+      <a class="wordmark" href="#start" aria-label="Klimas Lucky Wheat — strona główna">K</a>
+      <nav aria-label="Nawigacja strony">
+        <a href="#historia">Historia</a>
+        <a href="#degustacja">Degustacja</a>
+        <a href="#sciana">Ściana</a>
+      </nav>
+      <div class="topbar-right">
+        <a class="insta-link" href="https://instagram.com/radeklimek" target="_blank" rel="noopener"
+          aria-label="Instagram @radeklimek">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          <span>@radeklimek</span>
+        </a>
+        <span class="age-mark">18+</span>
+      </div>
+    </div>
   </header>
 
   <main id="start">
     <section class="hero" aria-labelledby="page-title">
+      <!-- Rising bubbles -->
+      <div class="bubbles" aria-hidden="true">
+        <span class="bubble b1"></span>
+        <span class="bubble b2"></span>
+        <span class="bubble b3"></span>
+        <span class="bubble b4"></span>
+        <span class="bubble b5"></span>
+        <span class="bubble b6"></span>
+      </div>
+
       <div class="hero-panel wrapper">
         <p class="hero-brand">KLIMAS</p>
 
@@ -53,34 +87,35 @@
         </div>
 
         <aside class="bottle-card" aria-label="Dane piwa">
-        <p>Warka nr <strong>01/2026</strong></p>
-        <div class="metric-grid">
-          <div><b>4,2%</b><span>alk. obj.</span></div>
-          <div><b>12°</b><span>Blg</span></div>
-          <div><b>12</b><span>IBU</span></div>
-          <div><b>6–8°</b><span>serwuj</span></div>
-        </div>
-        <div class="bottle-lookup">
-          <label for="bottle-number">Którą butelkę masz?</label>
-          <div>
-            <input id="bottle-number" inputmode="numeric" min="1" max="40" placeholder="01–40" />
-            <button type="button" id="unlock-bottle">Odkryj</button>
+          <p>Warka nr <strong>01/2026</strong></p>
+          <div class="metric-grid">
+            <div><b>4,2%</b><span>alk. obj.</span></div>
+            <div><b>12°</b><span>Blg</span></div>
+            <div><b>12</b><span>IBU</span></div>
+            <div><b>6–8°</b><span>serwuj</span></div>
           </div>
-          <p id="bottle-message" aria-live="polite">Wpisz swój numer i odkryj ciekawostkę!</p>
-        </div>
-      </aside>
+          <div class="bottle-lookup">
+            <label for="bottle-number">Którą butelkę masz?</label>
+            <div>
+              <input id="bottle-number" inputmode="numeric" min="1" max="40" placeholder="01–40" />
+              <button type="button" id="unlock-bottle">Odkryj</button>
+            </div>
+            <p id="bottle-message" aria-live="polite">Wpisz swój numer i odkryj ciekawostkę!</p>
+          </div>
+        </aside>
       </div>
     </section>
 
     <section class="ticker" aria-label="Najważniejsze cechy piwa">
       <div>
         <span>Pszeniczne</span><i>✦</i><span>Orzeźwiające</span><i>✦</i><span>Belgijski charakter</span><i>✦</i><span>40
-          butelek</span><i>✦</i>
-        <span>Pszeniczne</span><i>✦</i><span>Orzeźwiające</span><i>✦</i><span>Belgijski charakter</span><i>✦</i>
+          butelek</span><i>✦</i><span>Limitowana edycja</span><i>✦</i>
+        <span>Pszeniczne</span><i>✦</i><span>Orzeźwiające</span><i>✦</i><span>Belgijski charakter</span><i>✦</i><span>40
+          butelek</span><i>✦</i><span>Limitowana edycja</span><i>✦</i>
       </div>
     </section>
 
-    <section class="story wrapper section" id="historia" aria-labelledby="story-title">
+    <section class="story wrapper section" id="historia" aria-labelledby="story-title" data-animate>
       <div class="section-heading">
         <p class="eyebrow"><span></span> O tej warce</p>
         <h2 id="story-title">Pełnia smaku,<br />pełnia orzeźwienia.</h2>
@@ -88,7 +123,6 @@
       <div class="story-content">
         <p class="story-intro">
           Witbier to belgijski klasyk: jasny, naturalnie mętny i pełen cytrusowo-korzennych niuansów.
-
         </p>
         <dl class="fact-list">
           <div>
@@ -107,7 +141,7 @@
       </div>
     </section>
 
-    <section class="ingredient-section section" aria-labelledby="ingredients-title">
+    <section class="ingredient-section section" aria-labelledby="ingredients-title" data-animate>
       <div class="wrapper">
         <div class="section-heading centered">
           <p class="eyebrow"><span></span> Receptura</p>
@@ -133,17 +167,17 @@
           </button>
         </div>
         <div class="ingredient-detail" id="ingredient-detail" aria-live="polite">
-          <span class="detail-label">Słod:</span>
-          <p>„To dzięki mnie piwo jest lekkie, miękkie i przyjemnie mętne. Nie filtruj wrażeń.”</p>
+          <span class="detail-label">Słód:</span>
+          <p>„Nadaje piwu lekką pełnię, jasną barwę oraz delikatny, zbożowy charakter z subtelną nutą chleba i świeżego pieczywa."</p>
         </div>
       </div>
     </section>
 
-    <section class="tasting wrapper section" id="degustacja" aria-labelledby="tasting-title">
+    <section class="tasting wrapper section" id="degustacja" aria-labelledby="tasting-title" data-animate>
       <div class="tasting-panel">
         <div>
           <p class="eyebrow"><span></span> Poznaj aromaty</p>
-          <h2 id="tasting-title">Jak serwować LUCKY WHEAT?<br /></h2>
+          <h2 id="tasting-title">Jak serwować<br />LUCKY WHEAT?</h2>
           <p class="tasting-copy">To mały przewodnik po dużej przyjemności. Dopasuj temperaturę i poznaj szczegóły.</p>
         </div>
         <div class="temperature-control">
@@ -154,13 +188,11 @@
             <p id="temperature-note">Idealnie. Cytrusy są wyraźne, a piwo pozostaje rześkie.</p>
           </div>
         </div>
-        <div class="mood-control">
-
-        </div>
+        <div class="mood-control"></div>
       </div>
     </section>
 
-    <section class="wall section" id="sciana" aria-labelledby="wall-title">
+    <section class="wall section" id="sciana" aria-labelledby="wall-title" data-animate>
       <div class="wrapper">
         <div class="wall-heading">
           <div>
@@ -182,19 +214,27 @@
             <div class="photo-preview" id="photo-preview" hidden><img alt="Podgląd wybranego zdjęcia" /><button
                 type="button" aria-label="Usuń wybrane zdjęcie">×</button></div>
             <button class="button button-light" type="submit">Wyślij do ściany wspomnień <span>↗</span></button>
-
           </form>
           <div class="memory-grid" id="memory-grid" aria-live="polite"></div>
         </div>
       </div>
     </section>
 
-    <section class="label-callout wrapper section">
+    <section class="label-callout wrapper section" data-animate>
       <div class="label-copy">
         <p class="eyebrow"><span></span> Edycja kolekcjonerska</p>
         <h2>Masz ją w rękach.<br />Dzięki za zaufanie!</h2>
         <p>Lucky Wheat to 40 butelek domowego witbiera. Schłodź do 6–8°C i wznieś toast za
           kolejne warki.</p>
+        <a class="insta-cta" href="https://instagram.com/radeklimek" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          Obserwuj @radeklimek
+        </a>
       </div>
       <button class="label-image" type="button" data-open-label aria-label="Powiększ etykietę Lucky Wheat">
         <img src="assets/lucky-wheat-label.png" alt="Etykieta Lucky Wheat Witbier" />
@@ -207,7 +247,16 @@
     <div class="wrapper footer-content">
       <p><b>KLIMAS</b> <span>·</span> Lucky Wheat 01/2026</p>
       <p>Warzone domowo, dzielone z ludźmi.</p>
-
+      <a class="footer-insta" href="https://instagram.com/radeklimek" target="_blank" rel="noopener"
+        aria-label="Instagram @radeklimek">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+        </svg>
+        @radeklimek
+      </a>
     </div>
   </footer>
 
